@@ -1,0 +1,67 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Connectivity verification test document
+    match /test/connection {
+      allow read, write: if true;
+    }
+
+    // 16 Categories Managed Files (Al Aurad Wal Manqib Repository)
+    // Ensures admin CMS modifications, replacements, and purges persist reliably
+    match /managed_files/{fileId} {
+      allow read, list: if true;
+      allow create, update, delete: if true;
+    }
+
+    // Devotionals (Maulid, Ratheeb, Swalath, Baith)
+    match /devotionals/{devotionalId} {
+      allow read, list: if true;
+      allow create, update, delete: if true;
+    }
+
+    // Articles & Knowledge Base
+    match /articles/{articleId} {
+      allow read, list: if true;
+      allow create, update, delete: if true;
+    }
+
+    // Admin Audit Logs
+    match /audit_logs/{logId} {
+      allow read, write: if true;
+    }
+
+    // Admin directory
+    match /admins/{adminId} {
+      allow read, write: if true;
+    }
+
+    // User profiles
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+
+    // User Bookmarks
+    match /user_bookmarks/{bookmarkId} {
+      allow read, write: if true;
+    }
+
+    // User Private Notes
+    match /user_notes/{noteId} {
+      allow read, write: if true;
+    }
+
+    // User Daily Dhikr & Aurad Progress Tracker
+    match /user_dhikr_logs/{logId} {
+      allow read, write: if true;
+    }
+    match /users/{userId}/dhikr_progress/{dateId} {
+      allow read, write: if true;
+    }
+  }
+}

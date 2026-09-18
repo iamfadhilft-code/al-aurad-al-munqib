@@ -1,0 +1,10 @@
+{
+  "name": "AL AURAD WAL MANQIB",
+  "description": "Comprehensive Islamic spiritual repository, litany manuscripts, Quran recitation, prayer times, CMS file storage, and AI Islamic companion with Maps grounding.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "entities": {
+    "Admin": {
+      "title": "Admin",
+      "description": "Administrator identity with privileged content management rights",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "maxLength": 128 },
+        "role": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["email", "role"]
+    },
+    "User": {
+      "title": "User",
+      "description": "Registered app user profile",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 128 },
+        "displayName": { "type": "string", "maxLength": 128 },
+        "photoURL": { "type": "string", "maxLength": 512 },
+        "role": { "type": "string", "maxLength": 32 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["uid", "email"]
+    },
+    "ManagedFile": {
+      "title": "ManagedFile",
+      "description": "Verified Islamic digital document, PDF, manuscript or media file across 16 categories",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 256 },
+        "titleArabic": { "type": "string", "maxLength": 256 },
+        "titleMalayalam": { "type": "string", "maxLength": 256 },
+        "description": { "type": "string", "maxLength": 2048 },
+        "category": { "type": "string", "maxLength": 64 },
+        "language": { "type": "string", "maxLength": 16 },
+        "author": { "type": "string", "maxLength": 256 },
+        "storagePath": { "type": "string", "maxLength": 1048576 },
+        "fileName": { "type": "string", "maxLength": 256 },
+        "fileType": { "type": "string", "maxLength": 32 },
+        "mimeType": { "type": "string", "maxLength": 128 },
+        "fileSize": { "type": "string", "maxLength": 64 },
+        "version": { "type": "number" },
+        "uploadedBy": { "type": "string", "maxLength": 128 },
+        "uploadDate": { "type": "string", "maxLength": 64 },
+        "updatedDate": { "type": "string", "maxLength": 64 },
+        "status": { "type": "string", "maxLength": 32 },
+        "publicVisibility": { "type": "boolean" },
+        "previousVersions": { "type": "array" }
+      },
+      "required": ["title", "category", "storagePath", "fileName", "status"]
+    },
+    "Devotional": {
+      "title": "Devotional",
+      "description": "Devotional liturgical text such as Maulid, Ratheeb, Swalath, or Baith",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 256 },
+        "titleArabic": { "type": "string", "maxLength": 256 },
+        "titleMalayalam": { "type": "string", "maxLength": 256 },
+        "category": { "type": "string", "maxLength": 64 },
+        "author": { "type": "string", "maxLength": 256 },
+        "description": { "type": "string", "maxLength": 2048 },
+        "contentArabic": { "type": "string", "maxLength": 131072 },
+        "contentMalayalam": { "type": "string", "maxLength": 131072 },
+        "contentEnglish": { "type": "string", "maxLength": 131072 },
+        "audioUrl": { "type": "string", "maxLength": 512 },
+        "pdfUrl": { "type": "string", "maxLength": 512 },
+        "status": { "type": "string", "maxLength": 32 },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["title", "category", "status"]
+    },
+    "Article": {
+      "title": "Article",
+      "description": "Islamic knowledge or historical scholarship article",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 256 },
+        "titleMalayalam": { "type": "string", "maxLength": 256 },
+        "author": { "type": "string", "maxLength": 256 },
+        "category": { "type": "string", "maxLength": 64 },
+        "summary": { "type": "string", "maxLength": 2048 },
+        "content": { "type": "string", "maxLength": 131072 },
+        "readTime": { "type": "string", "maxLength": 64 },
+        "date": { "type": "string", "maxLength": 64 },
+        "status": { "type": "string", "maxLength": 32 }
+      },
+      "required": ["title", "category", "status"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Audit record of changes executed by administrators",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "adminName": { "type": "string", "maxLength": 128 },
+        "action": { "type": "string", "maxLength": 64 },
+        "entity": { "type": "string", "maxLength": 128 },
+        "entityTitle": { "type": "string", "maxLength": 256 },
+        "timestamp": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["action", "entity", "timestamp"]
+    },
+    "UserBookmark": {
+      "title": "UserBookmark",
+      "description": "User bookmark for quick reference",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "itemId": { "type": "string", "maxLength": 128 },
+        "type": { "type": "string", "maxLength": 64 },
+        "title": { "type": "string", "maxLength": 256 },
+        "subtitle": { "type": "string", "maxLength": 256 },
+        "pathOrRef": { "type": "string", "maxLength": 256 },
+        "date": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["userId", "itemId", "title"]
+    },
+    "UserNote": {
+      "title": "UserNote",
+      "description": "User spiritual or scholarly reflection note",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 256 },
+        "surahOrTopic": { "type": "string", "maxLength": 256 },
+        "content": { "type": "string", "maxLength": 16384 },
+        "date": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["userId", "title", "content"]
+    }
+  },
+  "firestore": {
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/Admin" },
+      "description": "Collection of verified administrator IDs"
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Registered user profile records"
+    },
+    "/managed_files/{fileId}": {
+      "schema": { "$ref": "#/entities/ManagedFile" },
+      "description": "Managed Islamic PDF/media library documents with real-time updates and replacement"
+    },
+    "/devotionals/{devotionalId}": {
+      "schema": { "$ref": "#/entities/Devotional" },
+      "description": "Maulid, Ratheeb, and devotional texts"
+    },
+    "/articles/{articleId}": {
+      "schema": { "$ref": "#/entities/Article" },
+      "description": "Islamic knowledge articles"
+    },
+    "/audit_logs/{logId}": {
+      "schema": { "$ref": "#/entities/AuditLog" },
+      "description": "Admin operational audit trail"
+    },
+    "/user_bookmarks/{bookmarkId}": {
+      "schema": { "$ref": "#/entities/UserBookmark" },
+      "description": "Saved user bookmarks"
+    },
+    "/user_notes/{noteId}": {
+      "schema": { "$ref": "#/entities/UserNote" },
+      "description": "Private user study and reflection notes"
+    }
+  }
+}
